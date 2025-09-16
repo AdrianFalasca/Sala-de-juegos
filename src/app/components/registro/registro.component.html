@@ -1,0 +1,64 @@
+<div class="auth-wrap">
+  <p-card>
+    <ng-template pTemplate="header">
+      <h2 class="card-title">Registro</h2>
+    </ng-template>
+
+    <form class="p-fluid" [formGroup]="form" (ngSubmit)="registrar()">
+      
+      <div class="p-field">
+        <label class="text-muted">Email</label>
+        <input pInputText formControlName="email" placeholder="tu@mail.com" autocomplete="email" />
+        <p-message
+          *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.dirty || form.get('email')?.touched)"
+          severity="error" text="El email es obligatorio">
+        </p-message>
+        <p-message
+          *ngIf="form.get('email')?.hasError('email') && (form.get('email')?.dirty || form.get('email')?.touched)"
+          severity="error" text="Formato de email inválido">
+        </p-message>
+      </div>
+
+      
+      <div class="p-field">
+        <label class="text-muted">Contraseña</label>
+        <p-password
+          formControlName="password"
+          [feedback]="false"
+          [toggleMask]="true"
+          autocomplete="new-password">
+        </p-password>
+        <p-message
+          *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)"
+          severity="error" text="La contraseña es obligatoria">
+        </p-message>
+        <p-message
+          *ngIf="form.get('password')?.hasError('minlength') && (form.get('password')?.dirty || form.get('password')?.touched)"
+          severity="error" text="Mínimo 6 caracteres">
+        </p-message>
+      </div>
+
+      
+      <div class="p-field">
+        <label class="text-muted">Confirmar contraseña</label>
+        <p-password
+          formControlName="confirm"
+          [feedback]="false"
+          [toggleMask]="true"
+          autocomplete="new-password">
+        </p-password>
+        <p-message
+          *ngIf="form.get('confirm')?.hasError('required') && (form.get('confirm')?.dirty || form.get('confirm')?.touched)"
+          severity="error" text="La confirmación es obligatoria">
+        </p-message>
+        <p-message
+          *ngIf="form.hasError('passwordMismatch') && (form.get('confirm')?.dirty || form.get('confirm')?.touched)"
+          severity="error" text="Las contraseñas no coinciden">
+        </p-message>
+      </div>
+
+      <button pButton type="submit" label="Crear cuenta" [disabled]="cargando || form.invalid"></button>
+      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" styleClass="mt-2"></p-message>
+    </form>
+  </p-card>
+</div>

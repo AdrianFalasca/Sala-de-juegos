@@ -1,0 +1,6 @@
+<p-card>
+  <h2 *ngIf="usuario$() as u; else generico">Bienvenido, {{ u.email }}</h2>
+  <ng-template #generico>
+    <h2>Bienvenido</h2>
+  </ng-template>
+</p-card>

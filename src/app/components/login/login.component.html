@@ -1,0 +1,49 @@
+<div class="auth-wrap">
+  <p-card>
+    <ng-template pTemplate="header">
+      <h2 class="card-title text-center">Login</h2>
+    </ng-template>
+
+    <form class="p-fluid" [formGroup]="form" (ngSubmit)="ingresar()">
+      <div class="p-field" style="margin-bottom: .75rem">
+        <label class="text-muted">Email</label>
+        <input pInputText formControlName="email" placeholder="Ingrese su email" />
+        <p-message
+          *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.dirty || form.get('email')?.touched)"
+          severity="error" text="El email es obligatorio">
+        </p-message>
+        <p-message
+          *ngIf="form.get('email')?.hasError('email') && (form.get('email')?.dirty || form.get('email')?.touched)"
+          severity="error" text="Formato de email inválido">
+        </p-message>
+      </div>
+
+      <div class="p-field" style="margin-bottom: 1rem">
+        <label class="text-muted">Contraseña</label>
+        <input pPassword formControlName="password" [feedback]="false" toggleMask="true" />
+        <p-message
+          *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)"
+          severity="error" text="La contraseña es obligatoria">
+        </p-message>
+        <p-message
+          *ngIf="form.get('password')?.hasError('minlength') && (form.get('password')?.dirty || form.get('password')?.touched)"
+          severity="error" text="Mínimo 6 caracteres">
+        </p-message>
+      </div>
+
+      <button pButton type="submit" label="Ingresar" [disabled]="cargando || form.invalid"></button>
+      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" styleClass="mt-2"></p-message>
+    </form>
+
+    <hr class="divider">
+
+    
+    <p class="text-muted atenuado text-center">Accesos rápidos</p>
+    <div class="rapidos center-flex">
+      <button *ngFor="let a of accesosRapidos"
+              pButton class="p-button-outlined"
+              (click)="completar(a.email, a.pass)"
+              [label]="a.label"></button>
+    </div>
+  </p-card>
+</div>

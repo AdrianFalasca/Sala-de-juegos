@@ -1,0 +1,23 @@
+.profile-wrap {
+  max-width: 520px;    
+  margin: 6vh auto 0;   
+}
+
+.card-title {
+  text-align: center; 
+  margin: .25rem 0 .5rem;
+  font-weight: 700;
+}
+
+.profile-img {
+  display: block;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: .25rem auto 1rem;  
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+.center { text-align: center; }
+.text-muted { color: #94a3b8; } 

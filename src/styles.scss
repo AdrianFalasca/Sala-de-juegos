@@ -1,0 +1,56 @@
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+
+
+:root {
+  --brand-gradient-start: #312e81; 
+  --brand-gradient-end:   #4f46e5; 
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(99,102,241,.25), transparent 60%),
+              linear-gradient(180deg, #0b1020, #0d1326);
+  color: #e5e7eb; 
+}
+
+
+.app-shell {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+
+.app-content {
+  width: min(1100px, 92vw);
+  margin: 1.25rem auto 2rem;
+}
+
+
+.p-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(17, 24, 39, 0.75); 
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  backdrop-filter: blur(6px);
+}
+.p-card .p-card-header,
+.p-card .p-card-title {
+  color: #e5e7eb;
+}
+
+.p-fluid .p-inputtext,
+.p-fluid .p-password,
+.p-fluid .p-button {
+  width: 100%;
+}
+
+
+.text-muted { color: #94a3b8; } 
+.error { color: #f87171; }      
