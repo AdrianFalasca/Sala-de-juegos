@@ -33,17 +33,21 @@ export class LoginComponent {
   errorMsg = '';
 
   accesosRapidos = [
-    { label: 'Usuario 1', email: 'mihebi3640@merumart.com', pass: '123456' },
-    { label: 'Usuario 2', email: 'mihebi3641@merumart.com', pass: '123456' }
+    { label: 'Jugador 1', email: 'carlos@hotmail.com', pass: '123456' },
+    { label: 'Jugador 2', email: 'jorge@hotmail.com', pass: '123456' }
   ];
 
-  completar(e: string, p: string) { this.form.patchValue({ email: e, password: p }); }
+  completar(e: string, p: string) { 
+    this.form.patchValue({ email: e, password: p });
+   }
 
   async ingresar() {
     if (this.form.invalid) { this.form.markAllAsTouched(); return; }   
-    this.cargando = true; this.errorMsg = '';
+    
+    this.errorMsg = '';
     const { email, password } = this.form.value as any;
     try {
+      this.cargando = true; 
       await this.auth.login(email, password);
       this.router.navigateByUrl('/');
     } catch (e: any) {

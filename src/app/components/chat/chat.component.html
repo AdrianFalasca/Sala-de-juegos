@@ -1,0 +1,30 @@
+<div class="page-wrap">
+  <p-card class="page-card crt bezel">
+    <ng-template pTemplate="header">
+      <h2 class="neon">Sala de Chat</h2>
+    </ng-template>
+
+    <div *ngIf="cargando" class="center">
+    Cargando …
+  </div>
+
+  <ng-container *ngIf="!cargando">
+    <div class="chat-box">
+      <div class="msg" *ngFor="let m of mensajes()">
+        <div class="meta">
+          <b>{{ m.email }}</b>
+          <span>• {{ m.created_at | date:'HH:mm · dd/MM/yy' }}</span>
+        </div>
+        <div class="content">{{ m.content }}</div>
+      </div>
+    </div>
+
+    <div class="send-row">
+      <input pInputText
+             [(ngModel)]="texto"
+             placeholder="Escribí un mensaje" />
+      <button pButton label="Enviar" (click)="enviar()"></button>
+    </div>
+    </ng-container>
+  </p-card>
+</div>

@@ -1,0 +1,34 @@
+.chat-box {
+  max-height: 50vh;
+  overflow: auto;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  background: rgba(255,255,255,.03);
+  border-radius: 10px;
+  margin-bottom: .75rem;
+}
+.msg .meta {
+  font-size: .85rem;
+  color: #a1a1aa;
+}
+.msg .content {
+  background: rgba(99,102,241,.12); 
+  padding: .5rem .65rem;
+  border-radius: 8px;
+  color: #e5e7eb;
+}
+.send-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem;
+}
+
+.card-title {
+  text-align: center;
+  margin: .25rem 0 .5rem;
+  font-weight: 700;
+}
+
+.center { text-align: center; }

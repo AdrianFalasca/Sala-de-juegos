@@ -1,0 +1,57 @@
+<div class="page-wrap">
+  <p-card class="page-card crt bezel">
+    <ng-template pTemplate="header">
+      <h2 class="neon">Ahorcado</h2>
+    </ng-template>
+
+   
+  
+  <div class="dibujo-wrap">
+    <svg class="ahorcado-svg" viewBox="0 0 200 220" role="img" aria-label="Dibujo del ahorcado">
+      <!-- Estructura fija -->
+      <line x1="10"  y1="210" x2="190" y2="210" class="palo" />
+      <line x1="40"  y1="210" x2="40"  y2="20"  class="palo" />
+      <line x1="40"  y1="20"  x2="130" y2="20"  class="palo" />
+      <line x1="130" y1="20"  x2="130" y2="50"  class="palo" />
+
+      <!-- Partes que aparecen con cada error -->
+      <circle cx="130" cy="70"  r="20" class="parte" *ngIf="errores() >= 1" />               <!-- cabeza -->
+      <line   x1="130" y1="90"  x2="130" y2="140" class="parte" *ngIf="errores() >= 2" />    <!-- torso -->
+      <line   x1="130" y1="105" x2="110" y2="125" class="parte" *ngIf="errores() >= 3" />    <!-- brazo izq -->
+      <line   x1="130" y1="105" x2="150" y2="125" class="parte" *ngIf="errores() >= 4" />    <!-- brazo der -->
+      <line   x1="130" y1="140" x2="115" y2="170" class="parte" *ngIf="errores() >= 5" />    <!-- pierna izq -->
+      <line   x1="130" y1="140" x2="145" y2="170" class="parte" *ngIf="errores() >= 6" />    <!-- pierna der -->
+    </svg>
+  </div>
+
+
+    <div class="estado">
+      <div class="palabra">{{ palabraOculta() }}</div>
+      <div>Errores: {{ errores() }} / {{ maxErrores }}</div>
+    </div>
+
+    <div class="botonera">
+      <button
+        *ngFor="let l of letras"
+        pButton
+        [label]="l"
+        class="p-button-outlined"
+        [disabled]="letrasElegidas().includes(l) || gano || perdio"
+        (click)="elegir(l)">
+      </button>
+    </div>
+
+    <div class="resultado" *ngIf="gano">
+       ¡Ganaste!
+      <button pButton class="p-button-text" label="Reiniciar" (click)="reiniciar()"></button>
+    </div>
+
+    <div class="resultado" *ngIf="perdio">
+       Perdiste. Era <b>{{ word() }}</b>
+      <button pButton class="p-button-text" label="Reintentar" (click)="reiniciar()"></button>
+    </div>
+  
+
+  
+  </p-card>
+</div>

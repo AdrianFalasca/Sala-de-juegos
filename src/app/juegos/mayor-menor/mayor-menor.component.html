@@ -1,0 +1,44 @@
+<div class="page-wrap">
+  <p-card class="page-card crt bezel">
+    <ng-template pTemplate="header">
+      <h2 class="neon">Mayor o Menor</h2>
+    </ng-template>
+
+    
+    <div class="mesa">
+      <div class="card big">{{ actual()?.label }}</div>
+      <div class="flecha">→</div>
+      
+      <div class="card next">{{ revelada() ? (proxima()?.label || '—') : '¿?' }}</div>
+    </div>
+
+    <div class="acciones">
+      <button pButton
+              label="Menor"
+              class="p-button-secondary"
+              (click)="jugar('MENOR')"
+              [disabled]="end() || revelada()"></button>
+
+      <button pButton
+              label="Mayor"
+              (click)="jugar('MAYOR')"
+              [disabled]="end() || revelada()"></button>
+    </div>
+
+    <div class="score">Puntaje: <b>{{ score() }}</b></div>
+
+   
+    <div class="fin" *ngIf="revelada() && !end()">
+      <button pButton class="p-button-text" label="Siguiente" (click)="siguiente()"></button>
+    </div>
+
+    
+    <div class="fin" *ngIf="end()">
+      <div class="resultado-final"><b>{{ finalMsg() }}</b></div>
+      <div>Puntaje final: <b>{{ score() }}</b></div>
+      <button pButton class="p-button-text" label="Reiniciar" (click)="reiniciar()"></button>
+    </div>
+   
+    
+  </p-card>
+</div>

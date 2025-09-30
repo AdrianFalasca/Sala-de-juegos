@@ -1,21 +1,51 @@
-<div class="auth-wrap">
-  <p-card>
+<div class="page-wrap">
+<p-card class="page-card crt bezel">
     <ng-template pTemplate="header">
-      <h2 class="card-title">Registro</h2>
+      <h2 class="neon">Registro</h2>
     </ng-template>
 
+    <div *ngIf="cargando" class="center">
+    Cargando …
+  </div>
+
+  <ng-container *ngIf="!cargando">
     <form class="p-fluid" [formGroup]="form" (ngSubmit)="registrar()">
       
       <div class="p-field">
-        <label class="text-muted">Email</label>
-        <input pInputText formControlName="email" placeholder="tu@mail.com" autocomplete="email" />
+      <label class="text-muted">Usuario</label>
+      <input
+        pInputText
+        formControlName="username"
+        placeholder="Elige un nombre de usuario"
+        autocomplete="username" />
+
+      
+      <p-message
+        *ngIf="form.get('username')?.hasError('required') && (form.get('username')?.dirty || form.get('username')?.touched)"
+        severity="error" text="El usuario es obligatorio">
+      </p-message>
+      <p-message
+        *ngIf="form.get('username')?.hasError('minlength') && (form.get('username')?.dirty || form.get('username')?.touched)"
+        severity="error" text="Mínimo 3 caracteres">
+      </p-message>
+      <p-message
+        *ngIf="form.get('username')?.hasError('maxlength') && (form.get('username')?.dirty || form.get('username')?.touched)"
+        severity="error" text="Máximo 20 caracteres">
+      </p-message>
+    
+    </div>
+
+
+      <div class="p-field">
+        <label class="text-muted">Correo</label>
+        <input pInputText formControlName="email" placeholder="Ingrese su correo" autocomplete="email" />
         <p-message
           *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.dirty || form.get('email')?.touched)"
-          severity="error" text="El email es obligatorio">
+          severity="error" text="El correo es obligatorio">
         </p-message>
         <p-message
           *ngIf="form.get('email')?.hasError('email') && (form.get('email')?.dirty || form.get('email')?.touched)"
-          severity="error" text="Formato de email inválido">
+          severity="error" text="Formato de correo inválido">
         </p-message>
       </div>
 
@@ -26,6 +56,7 @@
           formControlName="password"
           [feedback]="false"
           [toggleMask]="true"
+          placeholder="Ingrese su contraseña"
           autocomplete="new-password">
         </p-password>
         <p-message
@@ -45,7 +76,9 @@
           formControlName="confirm"
           [feedback]="false"
           [toggleMask]="true"
+          placeholder="Repita su contraseña"
           autocomplete="new-password">
+          
         </p-password>
         <p-message
           *ngIf="form.get('confirm')?.hasError('required') && (form.get('confirm')?.dirty || form.get('confirm')?.touched)"
@@ -58,7 +91,8 @@
       </div>
 
       <button pButton type="submit" label="Crear cuenta" [disabled]="cargando || form.invalid"></button>
-      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" styleClass="mt-2"></p-message>
+      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" ></p-message>
     </form>
+  </ng-container>
   </p-card>
 </div>

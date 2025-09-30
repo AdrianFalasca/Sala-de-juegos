@@ -1,0 +1,21 @@
+:host { display: block; }
+
+
+.game-wrap {
+  max-width: 520px;          
+  margin: 6vh auto 0;       
+}
+.p-card { min-height: 460px; }
+.card-title {
+  text-align: center;        
+  margin: .25rem 0 .5rem;
+  font-weight: 700;
+}
+
+
+.mesa { display:flex; align-items:center; justify-content:center; gap:.75rem; margin-bottom:.75rem; }
+.card { font: 700 1.4rem/1 monospace; padding:.5rem .7rem; border-radius:10px; background: rgba(255,255,255,.06); }
+.big { font-size:1.8rem; }
+.acciones { display:flex; gap:.5rem; justify-content:center; margin:.5rem 0; }
+.score, .fin { text-align:center; margin-top:.25rem; }
+.flecha { opacity:.7; }

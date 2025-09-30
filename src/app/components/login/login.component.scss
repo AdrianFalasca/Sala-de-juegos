@@ -1,20 +1,11 @@
-.auth-wrap {
-  max-width: 420px;
-  margin: 6vh auto 0;
-}
-
-.card-title {
-  text-align: center;
-  margin: .25rem 0 .5rem;
-  font-weight: 700;
-}
-
-
 .text-center { text-align: center; }
 .center-flex { justify-content: center; }
 
-.p-field { margin-bottom: .75rem; }
+.p-field { 
+    margin-bottom: 1rem;
+}
 .rapidos { display: flex; gap: .5rem; flex-wrap: wrap; } 
 .divider { border-color: rgba(255,255,255,.08); margin: .75rem 0; }
 .atenuado { margin: .25rem 0 .5rem; }
-.mt-2 { margin-top: .5rem; }
+
+.center { text-align: center; }

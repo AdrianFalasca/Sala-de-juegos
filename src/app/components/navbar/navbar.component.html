@@ -1,18 +1,21 @@
-<p-menubar [model]="items">
-  
+<p-menubar [model]="items()">
   <ng-template pTemplate="start">
-    <span class="brand brand-centered">Sala de juegos</span>
+    <span class="brand brand-centered">
+      <span class="marquee">
+        <img src="sala-arcade.png" alt="Imagen Arcade" class="brand-icon" />
+        <span>Sala de juegos</span>
+      </span>
+    </span>
   </ng-template>
 
-
   <ng-template pTemplate="end">
-    <ng-container *ngIf="usuario$() as u; else authLinks">
-      <span class="usuario" style="margin-right:.5rem">👤 {{ u.email }}</span>
-      <button pButton size="small" class="p-button-text" label="Log Out" (click)="logout()"></button>
+    <ng-container *ngIf="usuario() as u; else authLinks">
+      <span class="usuario" >👤 {{ u.username }}</span>
+      <button pButton size="small" class="p-button-text" label="Cerrar sesión" (click)="logout()"></button>
     </ng-container>
     <ng-template #authLinks>
-      <button pButton size="small" class="p-button-text" label="Login" (click)="irLogin()"></button>
-      <button pButton size="small" class="p-button-text" label="Registro" (click)="irRegistro()"></button>
+      <button pButton size="small" class="p-button-text" label="Iniciar sesión" (click)="irLogin()"></button>
+      <button pButton size="small" class="p-button-text" label="Registrarse" (click)="irRegistro()"></button>
     </ng-template>
   </ng-template>
 </p-menubar>

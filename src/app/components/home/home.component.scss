@@ -11,3 +11,25 @@
 h2 {
   margin: .25rem 0 .5rem;
 }
+
+.welcome-card { 
+  min-height: 640px;             
+}
+
+.welcome-fill {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;          
+  justify-content: center;       
+  padding-bottom: .75rem;
+}
+
+.welcome-icon {
+  height: clamp(220px, 40vh, 500px); 
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
+}
+
+

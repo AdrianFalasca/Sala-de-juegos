@@ -1,26 +1,31 @@
-<div class="auth-wrap">
-  <p-card>
+<div class="page-wrap">
+  <p-card class="page-card crt bezel">
     <ng-template pTemplate="header">
-      <h2 class="card-title text-center">Login</h2>
+      <h2 class="neon">Login</h2>
     </ng-template>
 
-    <form class="p-fluid" [formGroup]="form" (ngSubmit)="ingresar()">
-      <div class="p-field" style="margin-bottom: .75rem">
-        <label class="text-muted">Email</label>
-        <input pInputText formControlName="email" placeholder="Ingrese su email" />
+    <div *ngIf="cargando" class="center">
+        Cargando …
+    </div>
+
+    <ng-container *ngIf="!cargando">
+    <form  class="p-fluid" [formGroup]="form" (ngSubmit)="ingresar()">
+      <div class="p-field" >
+        <label class="text-muted">Correo</label>
+        <input pInputText formControlName="email" placeholder="Ingrese su correo" />
         <p-message
           *ngIf="form.get('email')?.hasError('required') && (form.get('email')?.dirty || form.get('email')?.touched)"
-          severity="error" text="El email es obligatorio">
+          severity="error" text="El correo es obligatorio">
         </p-message>
         <p-message
           *ngIf="form.get('email')?.hasError('email') && (form.get('email')?.dirty || form.get('email')?.touched)"
-          severity="error" text="Formato de email inválido">
+          severity="error" text="Formato de correo inválido">
         </p-message>
       </div>
 
-      <div class="p-field" style="margin-bottom: 1rem">
+      <div class="p-field">
         <label class="text-muted">Contraseña</label>
-        <input pPassword formControlName="password" [feedback]="false" toggleMask="true" />
+        <input pPassword formControlName="password" placeholder="Ingrese su contraseña" [feedback]="false" toggleMask="true" />
         <p-message
           *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)"
           severity="error" text="La contraseña es obligatoria">
@@ -32,7 +37,7 @@
       </div>
 
       <button pButton type="submit" label="Ingresar" [disabled]="cargando || form.invalid"></button>
-      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" styleClass="mt-2"></p-message>
+      <p-message *ngIf="errorMsg" severity="error" [text]="errorMsg" ></p-message>
     </form>
 
     <hr class="divider">
@@ -45,5 +50,7 @@
               (click)="completar(a.email, a.pass)"
               [label]="a.label"></button>
     </div>
+    </ng-container>
   </p-card>
+  
 </div>

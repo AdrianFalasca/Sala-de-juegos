@@ -1,6 +1,11 @@
-<p-card>
-  <h2 *ngIf="usuario$() as u; else generico">Bienvenido, {{ u.email }}</h2>
-  <ng-template #generico>
-    <h2>Bienvenido</h2>
-  </ng-template>
-</p-card>
+<div class="page-wrap">
+  <p-card class="page-card crt bezel">
+    <ng-template pTemplate="header">
+      <h2 class="neon">Bienvenido{{usuario() ? ', ' + (usuario()?.username) : '' }} </h2>
+    </ng-template>
+    
+    <div class="welcome-fill">
+      <img src="arcade-icon.png" alt="Arcade" class="welcome-icon" />
+    </div>
+  </p-card>
+</div>

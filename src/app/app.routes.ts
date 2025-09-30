@@ -6,5 +6,7 @@ export const routes: Routes = [
 { path: 'login', loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent) },
 { path: 'registro', loadComponent: () => import('./components/registro/registro.component').then(m => m.RegistroComponent) },
 { path: 'about', loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent) },
+{ path: 'chat', loadChildren: () => import('./components/chat/chat.routes').then(m => m.CHAT_ROUTES) },
+{ path: 'juegos', loadChildren: () => import('./juegos/juegos.routes').then(m => m.JUEGOS_ROUTES) },
 { path: '**', redirectTo: '' }
 ];

@@ -11,6 +11,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  usuario$ = computed(() => this.auth.usuario());
-  constructor(public auth: AuthService) {}
+  usuario = computed(() => this.auth.usuario());
+  //cuando cambia el estado desde otro componente que usa ese signal llama a computed y devuelve true(usuario ) si usuario no es null
+  constructor(private auth: AuthService) {}
+  
 }
